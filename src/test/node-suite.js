@@ -26,6 +26,7 @@ export async function registerNodeSuite() {
   await import('./commit_before_local.test.js')
   await import('./tombstones.test.js')
   await import('./reorder_noise.test.js')
+  await import('./acceptance_two_client.test.js')
 
   if (process.env.FLOCCUS_NODE_INCLUDE_BENCHMARK === 'true') {
     await import('./benchmark.test.js')
