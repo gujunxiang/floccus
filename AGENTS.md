@@ -142,3 +142,17 @@ Note: All AI contributions will be carefully reviewed by the project maintainers
 - Logs are noisy and misleading: the fuzzers (`randomTreeManipulationWithDeletion`) wrap their own `NativeTree` mutations in try/catch and `console.log` the errors, so most `E001/E002/E004` lines (stack via `NativeTree.updateBookmark`) are expected noise. The real failure is the line `Syncing failed with ...` (stack through `FakeAdapter` + `SyncProcess`).
 - CI job logs interleave real-time stdout with a buffered `Logger` dump at the end, and `util.inspect` truncates trees/actions (`[Bookmark]`, `[Array]`) — scan-result/plan contents are not fully recoverable from logs; trace by item id and the `Mapping <server|local> plan` markers instead.
 - A benchmark that ends with a tree mismatch but no sync error is often a silently dropped action: grep the sync's log for `Failed to map id`, then trace that id back through the sync that should have created its mapping.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in this repo's GitHub Issues, managed with the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-role vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: a root `GLOSSARY.md` plus `docs/adr/`. See `docs/agents/domain.md`.
